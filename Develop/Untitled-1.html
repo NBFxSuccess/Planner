@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+   <!--console.log(i + "::" + botnumber + "," + botstate + "," + bottimestamp + "," + botx + "," + boty); -->
+<html lang="en">
+<head>
+    <link rel="icon" href="assets/img/212aa5533bc95b3cc01a1520c7fd4c38.png" sizes="32x32"/>
+    <link rel="stylesheet" href="./assets/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steven Bots Map</title>
+    <style>
+    * {
+        background-color: black;
+    }
+.container {
+  margin-left:  auto;
+  margin-right:  auto;
+  margin-top: 0px;
+  max-width: 1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.coordinateCanvas {
+    position:relative;
+    z-index:20;
+}
+
+#muchwowcount {
+    position:relative;
+    font-size:30px;
+      font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+z-index: 200;
+color: 	#008000;
+margin-right:auto;
+margin-left:auto;
+padding-left:8em;
+margin-right:auto;
+margin-left:auto;
+margin-bottom:20px;
+}
+#muchwowcount2 {
+    position:relative;
+    font-size:30px;
+      font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+z-index: 200;
+color: 	#800000;
+padding-left:30px;
+padding-right:30px;
+margin-right:auto
+margin-left:auto;
+margin-bottom:20px;
+}
+hr {
+    height:30px;
+    color:black;
+    border:none;
+}
+#centerthis {
+display:flex;
+flex-wrap:flex;
+padding-top:10px;
+margin-top:10px;
+text-align:center;
+margin-left:auto
+margin-right:auto;
+margin-bottom:10px;
+flex-direction:row;
+justify-content:center;
+}
+#centerthis2 {
+display:flex;
+flex-wrap:flex;
+text-align:center;
+margin-bottom:20px;
+flex-direction:column;
+}
+#blipme {
+   color:rgb(64, 106, 59);
+}
+a {
+text-align:center;
+display:flex;
+flex-wrap:;
+color: rgb(64, 106, 59);
+}
+p {
+    padding-left:20px;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-right:20px;
+    margin-right:auto;
+    margin-left:auto;
+    position:relative;
+    justify-content:center;
+    cursor:pointer;
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+    border-style:solid;
+    color:rgb(64, 106, 59);
+    border-radius:15px;
+}
+}
+</style>
+</head>
+<body>
+    
+   <div id="centerthis">
+          <a id="muchwowcount"></a>
+     <a id="muchwowcount2"></a>
+     <hr>
+     </div>
+    <div class="container">
+    <canvas id="coordinateCanvas" width="1199" height="921"></canvas>
+              <div id="centerthis2">
+      <p id="blipme" align="center"><a>Highlight a specific Steven</a></p>
+      <br>
+      <p  id="shtevencounter" align="center"><a>Steven Counter</a></p>
+      </div>
+<script>
+var blipbutton = document.querySelector("#blipme");
+var shtevencountbtn = document.querySelector("#shtevencounter");
+shtevencountbtn.addEventListener("click", creationnumber);
+blipbutton.addEventListener("click", blipme);
+localStorage.clear();
+    var c = document.getElementById("coordinateCanvas");
+    var context = c.getContext("2d");
+
+    var topMap = new Image();
+    topMap.src = "MasterFile.png";
+    context.drawImage(topMap, 0, 0);
+    context.lineWidth = 3;
+	
+	var drawintervaltime = 1500;
+	var lerpamount = 15;
+	var lerptime = drawintervaltime/lerpamount;
+	
+	var lerpcounter = 0;
+    
+	var stevens = [];
+	
+    var alternatelol = 0;
+    var alivecount = ":)";
+    var bannedcount = ":)";
+    var blip = "xdafa";
+        console.log("🐶Much wow, you found the console.🐶")
+            console.log("<")
+commandlist2();
+	var fetchlock = false;
+    function drawMap() 
+    {
+        lerp();
+		
+		if (lerpcounter == lerpamount - 1 && fetchlock == false)
+		{
+		fetchlock = true;
+        fetch('https://steven.dog/whynotwork/congrats.txt', { cache: 'no-store'})
+          .then(response => response.text())
+          .then((data) => {
+			lerpcounter = 0; //reset lerp
+			fetchlock = false;
+		//	console.log("fetch called");
+			var d = new Date();
+			var currentTime = d.getTime();
+			
+			var fileData = null;
+                
+            fileData = data
+            //70504,SpamCowTeleport1,1648608717906,3267,3298
+            var fileLines = fileData.split(/\r?\n/)
+            alternatelol++;
+            var alivecount2 = 0;
+            var bannedcount2 = 0;
+            for (i = 0; i < fileLines.length; i++)
+            {
+                var split = fileLines[i].split(",");
+                var botnumber = split[0];
+                var botstate = split[1];
+                var bottimestamp = parseInt(split[2]);
+                var botx = parseInt(split[3]);
+                var boty = parseInt(split[4]);
+                var allcolor = "allcolor";
+				
+				
+				
+				document.querySelector("#muchwowcount").innerHTML = alivecount;
+				document.querySelector("#muchwowcount2").innerHTML = bannedcount;
+				
+				if (stevens[botnumber] == undefined)
+				{
+					var steven = new Object();
+					steven.botnumber = botnumber;
+					steven.botstate = botstate;
+					steven.bottimestamp = bottimestamp;
+					steven.botx = botx;
+					steven.boty = boty;
+					steven.lastx = botx;
+					steven.lasty = boty;
+					stevens[botnumber] = steven;
+				}
+				else
+				{
+					stevens[botnumber].botnumber = botnumber;
+					stevens[botnumber].botstate = botstate;
+					stevens[botnumber].bottimestamp = bottimestamp;
+					if (stevens[botnumber].lastx == undefined)
+					{
+						stevens[botnumber].lastx = botx;
+						stevens[botnumber].lasty = boty;
+					}
+					else
+					{
+						stevens[botnumber].lastx = stevens[botnumber].botx;
+						stevens[botnumber].lasty = stevens[botnumber].boty;
+					}
+					
+					stevens[botnumber].botx = botx;
+					stevens[botnumber].boty = boty;
+				}
+				
+                
+                
+                if (currentTime - bottimestamp > 20000)
+                {
+                    bannedcount2++;
+                }
+             //   else if (botstate.toLowerCase().includes("cope"))
+            //    {
+            //        alivecount2++;
+             //   }
+          //      else if (botstate.toLowerCase().includes("website"))
+          //      {
+          //          alivecount2++;
+         //       }
+                else
+                {
+                    alivecount2++;
+                }
+                
+            }
+            alivecount = (alivecount2 + " STEVENS ALIVE")
+            bannedcount = (bannedcount2 + " STEVENS BANNED")
+          });
+		  }
+        
+    }
+	
+	function lerp()
+	{
+//		console.log("lerp called, " + stevens.length);
+		if (lerpcounter == lerpamount - 1)
+			return;
+		lerpcounter++;
+		
+		
+		var d = new Date();
+		var currentTime = d.getTime();
+		
+		context.clearRect(0, 0, 1199, 921);
+		context.drawImage(topMap, 0, 0);
+		
+		var blipkeys = []
+		for (var key in stevens)
+		{
+			//!DOCTYPE html>:
+			//botnumber: "<!DOCTYPE html>"
+			var steven = stevens[key];
+			if (steven.botstate == undefined || steven.botnumber.includes("html"))
+				continue;
+			if (steven.botnumber.includes(blip))
+			{
+				blipkeys[key] = key;
+				continue;
+			}
+			if (currentTime - steven.bottimestamp > 20000)
+			{
+				context.strokeStyle = "rgba(255, 0, 0, 0.3)";
+			}
+			else if (steven.botstate.toLowerCase().includes("cope"))
+			{
+				context.strokeStyle = "cyan";
+			}
+			else if (steven.botstate.toLowerCase().includes("website"))
+			{
+				context.strokeStyle = "blue";
+			}
+			else
+			{
+				context.strokeStyle = "rgba(255, 255, 35, 0.6";
+			}
+
+			
+			
+			
+			//calculate the LERP
+			var diffx = steven.botx - steven.lastx;
+			var diffy = steven.boty - steven.lasty;
+			
+			//lerpcounter
+			var ratio = lerpcounter / lerpamount;
+			var botx = steven.lastx + diffx * ratio;
+			var boty = steven.lasty + diffy * ratio;
+			
+			/////
+			var xcoord = (botx - 2908)*1199 / 498
+			var ycoord = 921 - (boty - 3139) * 921 / 383
+			context.beginPath();
+			context.arc(xcoord, ycoord, 8, 0, 2*Math.PI);
+			context.stroke();
+			context.font = '13px monospace';
+			context.fillStyle = "rgba(236, 245, 234, 0.59)";
+			
+			if (alternatelol % 8 < 4)
+				context.fillText(steven.botnumber, xcoord, ycoord);
+			else
+				context.fillText(steven.botstate, xcoord, ycoord);
+			
+		}
+	
+		for (var key in blipkeys)
+		{
+			var blipboy = stevens[key]
+			context.strokeStyle = "#E6007D";
+			if (blipboy.botstate.toLowerCase().includes("website"))
+			{
+				context.strokeStyle = "blue";
+			}
+			if (currentTime - blipboy.bottimestamp > 20000)
+			{
+				context.strokeStyle = "rgba(255, 0, 0, 0.5)";
+			}
+//calculate the LERP
+			var diffx = blipboy.botx - blipboy.lastx;
+			var diffy = blipboy.boty - blipboy.lasty;
+			
+			//lerpcounter
+			var ratio = lerpcounter / lerpamount;
+			var botx = blipboy.lastx + diffx * ratio;
+			var boty = blipboy.lasty + diffy * ratio;
+			
+			/////
+			var xcoord = (botx - 2908)*1199 / 498
+			var ycoord = 921 - (boty - 3139) * 921 / 383
+			context.beginPath();
+			context.arc(xcoord, ycoord, 8, 0, 2*Math.PI);
+			context.stroke();
+			context.font = '13px monospace';
+			context.fillStyle = "rgba(236, 245, 234, 0.59)";
+			
+			if (alternatelol % 8 < 4)
+				context.fillText(blipboy.botnumber, xcoord, ycoord);
+			else
+				context.fillText(blipboy.botstate, xcoord, ycoord);
+
+		}
+	}
+    setInterval(drawMap, lerptime);
+   
+    function GiveUsMoneyBoss2() {
+        
+     window.location.href = "http://steven.dog/donate";
+    
+    }
+     function cls2() {
+        
+     console.clear();
+     console.log("🐶Much wow, you cleared the console.🐶")
+     commandlist2();
+    
+    }
+ function creationnumber() {
+  zeroMayn = "0";
+  stevenNumbermayn = prompt("Type in the name of a SteVen to see his creation number.. Ex: x18DE");
+  var fullHex = zeroMayn.concat(stevenNumbermayn);
+  stupid = "";
+ var total = parseInt(fullHex) + 0xFFFF
+ var realtotal = total - 1;
+  alert("There have been "+ realtotal+ " Stevens before SteVen2" + stevenNumbermayn)
+
+ 
+ 
+
+
+
+}
+
+
+
+    
+    
+    
+    function wydstevens2() {
+        for (var key in stevens)
+        {
+            var steven = stevens[key]
+            console.log(steven.botnumber + " " + steven.botstate);
+        }
+     //window.location.href = "http://steven.dog/whynotwork/congrats.txt";
+
+    }
+     function commandlist2() {
+         console.log("                  COMMANDS:")
+        console.log("------------------------------------------------------------------")
+    console.log(" alivecount bannedcount botnumber wydstevens wya cls commandlist")
+    console.log("------------------------------------------------------------------")
+    console.log("                  REDIRECTS:")
+     console.log("------------------------------------------------------")
+    console.log("     GiveUsMoneyBoss datafile refreshpage   ")
+    console.log("------------------------------------------------------")
+
+    }
+      function datafile2() {
+          window.location.href = "http://steven.dog/whynotwork/congrats.txt";
+
+
+    }
+    function refreshpage2() {
+          window.location.href = "http://steven.dog/map";
+
+
+    }
+    function generatepassword2() {
+          window.location.href = "http://steven.dog/passwordgen";
+
+
+    }
+    function blipme() {
+        blip = prompt("Which Steven do you want to highlight (pink)? (Case sensitive) EX: x189A", "0");
+    }
+	
+	Object.defineProperty(window, 'wydstevens', { get: wydstevens2 });
+	Object.defineProperty(window, 'commandlist', { get: commandlist2 });
+	Object.defineProperty(window, 'GiveUsMoneyBoss', { get: GiveUsMoneyBoss2 });
+	Object.defineProperty(window, 'datafile', { get: datafile2 });
+	Object.defineProperty(window, 'refreshpage', { get: refreshpage2 });
+Object.defineProperty(window, 'cls', { get: cls2 });
+Object.defineProperty(window, 'wya', { get: blipme });
+Object.defineProperty(window, 'botnumber', { get: creationnumber });
+Object.defineProperty(window, 'passwordgenerator', { get: generatepassword2 });
+  </script>
+  </div>
+</body>
+</html>
