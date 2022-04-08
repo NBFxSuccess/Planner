@@ -25,36 +25,24 @@ setInterval(function() {
     time.innerText = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
 }, 1000);
 
+const times = [nineAm,tenAm,elevenam,twelvepm,onepm,twopm,threepm,fourpm,fivepm]
 
 
-// If statements for past
-if (moment().hours() > 9) {
-    nineAm.classList.add("bg-secondary");
+// Copying this and changing the if carrot and classlist color did not work for some reason...?
+for (let i = 9; i < 17; i++) {
+    if (moment().hours() > i) {
+        for (let i = 0; i < 9; i++) {
+            times[i].classList.add("bg-secondary");
+        }
+        
+    }
+    
 }
-if (moment().hours() > 10) {
-    tenAm.classList.add("bg-secondary");
-}
-if (moment().hours() > 11) {
-    elevenam.classList.add("bg-secondary");
-}
-if (moment().hours() > 12) {
-    twelvepm.classList.add("bg-secondary");
-}
-if (moment().hours() > 13) {
-    onepm.classList.add("bg-secondary");
-}
-if (moment().hours() > 14) {
-    twopm.classList.add("bg-secondary");
-}
-if (moment().hours() > 15) {
-    threepm.classList.add("bg-secondary");
-}
-if (moment().hours() > 16) {
-    fourpm.classList.add("bg-secondary");
-}
-if (moment().hours() > 17) {
-    fivepm.classList.add("bg-secondary");
-}
+
+
+
+
+
 // If statements for future
 if (moment().hours() < 9) {
     nineAm.classList.add("bg-danger");
