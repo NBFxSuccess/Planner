@@ -48,13 +48,6 @@ for (let index = 9; index < 18; index++) {
     }
 }
 
-for (let index = 0; index < 9; index++) {
-    
-    if (moment().hours() < index) {
-       times[index].classList.add("bg-danger")
-    }
-}
-
 function save() {
 
     localStorage.setItem("9am",nineAm.value)
