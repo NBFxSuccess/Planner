@@ -29,7 +29,7 @@ const times = ["","","","","","","","","",nineAm,tenAm,elevenAm,twelvePm,onePm,t
 
 
 //sets all to secondary collar
-        for (let i = 9; i < 17; i++) {
+        for (let i = 9; i <= 17; i++) {
             times[i].classList.add("bg-secondary");
         }
 
