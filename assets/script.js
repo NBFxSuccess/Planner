@@ -28,19 +28,19 @@ setInterval(function() {
 const times = ["","","","","","","","","",nineAm,tenAm,elevenAm,twelvePm,onePm,twoPm,threepm,fourPm,fivePm]
 
 
-//sets all to secondary collar
+// Sets all to secondary color
         for (let i = 9; i <= 17; i++) {
             times[i].classList.add("bg-secondary");
         }
 
-// rewrites over secondary if moment hours = current
+// Rewrites over secondary color with green if moment.().hours = current
 for (let index = 9; index < 17; index++) {
     
     if (moment().hours() == index) {
        times[index].classList.add("bg-success")
     }
 }
-// rewrites over secondary if moment hours = more than current
+// Rewrites over secondary if moment().hours > current hours
 for (let index = 9; index < 18; index++) {
     
     if (moment().hours() < index) {
