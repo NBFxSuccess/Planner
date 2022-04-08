@@ -1,14 +1,14 @@
 // Declaring variables
-time = document.querySelector("#time");
-nineAm = document.getElementById("9amtextarea");
-tenAm = document.getElementById("10amtextarea");
-elevenam = document.getElementById("11amtextarea");
-twelvepm = document.getElementById("12pmtextarea");
-onepm = document.getElementById("1pmtextarea");
-twopm = document.getElementById("2pmtextarea");
-threepm = document.getElementById("3pmtextarea");
-fourpm = document.getElementById("4pmtextarea");
-fivepm = document.getElementById("5pmtextarea");
+let time = document.querySelector("#time");
+let nineAm = document.getElementById("9amtextarea");
+let tenAm = document.getElementById("10amtextarea");
+let elevenam = document.getElementById("11amtextarea");
+let twelvepm = document.getElementById("12pmtextarea");
+let onepm = document.getElementById("1pmtextarea");
+let twopm = document.getElementById("2pmtextarea");
+let threepm = document.getElementById("3pmtextarea");
+let fourpm = document.getElementById("4pmtextarea");
+let fivepm = document.getElementById("5pmtextarea");
 // Displaying all storage onto page.
 nineAm.value = localStorage.getItem("9am")
 tenAm.value = localStorage.getItem("10am")
@@ -28,7 +28,7 @@ setInterval(function() {
 const times = [nineAm,tenAm,elevenam,twelvepm,onepm,twopm,threepm,fourpm,fivepm]
 
 
-// Copying this and changing the if carrot and classlist color did not work for some reason...?
+// Copying this and changing the "if carrot and classlist color did not work for some reason...?
 for (let i = 9; i < 17; i++) {
     if (moment().hours() > i) {
         for (let i = 0; i < 9; i++) {
