@@ -25,84 +25,31 @@ setInterval(function() {
     time.innerText = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
 }, 1000);
 
-const times = [nineAm,tenAm,elevenam,twelvepm,onepm,twopm,threepm,fourpm,fivepm]
+const times = ["","","","","","","","","",nineAm,tenAm,elevenam,twelvepm,onepm,twopm,threepm,fourpm,fivepm]
 
 
 // Copying this and changing the "if carrot and classlist color did not work for some reason...?
 
-for (let i = 9; i < 17; i++) {
-        for (let i = 0; i < 9; i++) {
+        for (let i = 9; i < 17; i++) {
             times[i].classList.add("bg-secondary");
         }
-        
-    }
+
+
+for (let index = 9; index < 17; index++) {
     
-
-
-
-
-
-
-
-// If statements for future
-if (moment().hours() < 9) {
-    nineAm.classList.add("bg-danger");
+    if (moment().hours() == index) {
+       times[index].classList.add("bg-success")
+    }
 }
-if (moment().hours() < 10) {
-    tenAm.classList.add("bg-danger");
-}
-if (moment().hours() < 11) {
-    elevenam.classList.add("bg-danger");
-}
-if (moment().hours() < 12) {
-    twelvepm.classList.add("bg-danger");
-}
-if (moment().hours() < 13) {
-    onepm.classList.add("bg-danger");
-}
-if (moment().hours() < 14) {
-    twopm.classList.add("bg-danger");
-}
-if (moment().hours() < 15) {
-    threepm.classList.add("bg-danger");
-}
-if (moment().hours() < 16) {
-    fourpm.classList.add("bg-danger");
-}
-if (moment().hours() < 17) {
-    fivepm.classList.add("bg-danger");
+for (let index = 9; index < 18; index++) {
+    
+    if (moment().hours() < index) {
+       times[index].classList.add("bg-danger")
+    }
 }
 
 
-// If statements for current time
-if (moment().hours() == 9) {
-    nineAm.classList.add("bg-success");
-}
-if (moment().hours() == 10) {
-    tenAm.classList.add("bg-success");
-}
-if (moment().hours() == 11) {
-    elevenam.classList.add("bg-success");
-}
-if (moment().hours() == 12) {
-    twelvepm.classList.add("bg-success");
-}
-if (moment().hours() == 13) {
-    onepm.classList.add("bg-success");
-}
-if (moment().hours() == 14) {
-    twopm.classList.add("bg-success");
-}
-if (moment().hours() == 15) {
-    threepm.classList.add("bg-success");
-}
-if (moment().hours() == 16) {
-    fourpm.classList.add("bg-success");
-}
-if (moment().hours() == 17) {
-    fivepm.classList.add("bg-success");
-}
-
+    
 
 // Save everything 
 function save9am(){
