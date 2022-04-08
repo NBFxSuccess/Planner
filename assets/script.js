@@ -29,15 +29,16 @@ const times = [nineAm,tenAm,elevenam,twelvepm,onepm,twopm,threepm,fourpm,fivepm]
 
 
 // Copying this and changing the "if carrot and classlist color did not work for some reason...?
+
 for (let i = 9; i < 17; i++) {
-    if (moment().hours() > i) {
         for (let i = 0; i < 9; i++) {
             times[i].classList.add("bg-secondary");
         }
         
     }
     
-}
+
+
 
 
 
