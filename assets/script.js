@@ -48,46 +48,24 @@ for (let index = 9; index < 18; index++) {
     }
 }
 
-
+for (let index = 0; index < 9; index++) {
     
+    if (moment().hours() < index) {
+       times[index].classList.add("bg-danger")
+    }
+}
 
-// Save everything 
-function save9am(){
-    console.log(nineAm.value)
+function save() {
+
     localStorage.setItem("9am",nineAm.value)
-}
-function save10am(){
-    console.log(nineAm.value)
-    localStorage.setItem("10am",tenAm.value)
-}
-function save11am(){
-    console.log(nineAm.value)
+    localStorage.setItem("10am",elevenam.value)
     localStorage.setItem("11am",elevenam.value)
-}
-function save12pm(){
-    console.log(nineAm.value)
     localStorage.setItem("12pm",twelvepm.value)
-}
-function save1pm(){
-    console.log(nineAm.value)
     localStorage.setItem("1pm",onepm.value)
-}
-function save2pm(){
-    console.log(nineAm.value)
     localStorage.setItem("2pm",twopm.value)
-}
-function save3pm(){
-    console.log(nineAm.value)
     localStorage.setItem("3pm",threepm.value)
-}
-function save4pm(){
-    console.log(nineAm.value)
     localStorage.setItem("4pm",fourpm.value)
-}
-function save5pm(){
-    console.log(nineAm.value)
     localStorage.setItem("5pm",fivepm.value)
 }
-// Save everything end
-
+    
 
