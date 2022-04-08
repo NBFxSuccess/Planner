@@ -28,18 +28,19 @@ setInterval(function() {
 const times = ["","","","","","","","","",nineAm,tenAm,elevenam,twelvepm,onepm,twopm,threepm,fourpm,fivepm]
 
 
-
+//sets all to secondary collar
         for (let i = 9; i < 17; i++) {
             times[i].classList.add("bg-secondary");
         }
 
-
+// rewrites over secondary if moment hours = current
 for (let index = 9; index < 17; index++) {
     
     if (moment().hours() == index) {
        times[index].classList.add("bg-success")
     }
 }
+// rewrites over secondary if moment hours = more than curren
 for (let index = 9; index < 18; index++) {
     
     if (moment().hours() < index) {
