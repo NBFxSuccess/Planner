@@ -2,6 +2,12 @@
 
 Day Planner using local storage with mulitple saving text fields.
 
+## Technologies Used
+* Bootstrap
+* CSS
+* JavaScript
+* HTML
+
 ## Deployed Application link
 
 https://nbfxsuccess.github.io/Planner/
